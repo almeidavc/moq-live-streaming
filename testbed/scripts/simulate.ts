@@ -1,5 +1,5 @@
 import { config } from "../config";
-import { parseProfile, simulateNetworkPattern } from "../simulateMacos";
+import { parseProfile, simulateNetworkPattern } from "../src/simulateMacos";
 
 const args = process.argv.slice(2);
 const profileFilePath = args.length > 0 ? args[0] : config.networkProfile;

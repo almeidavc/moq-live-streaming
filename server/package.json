@@ -1,0 +1,7 @@
+{
+  "name": "@moq-live-streaming/server",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "./dev/live-ingest.sh | ./mp4-parser/mp4-parser | ./scripts/run.sh"
+  }
+}

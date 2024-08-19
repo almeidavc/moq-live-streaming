@@ -1,5 +1,5 @@
 {
-  "name": "live-streaming-client",
+  "name": "@moq-live-streaming/client",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,15 +7,11 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "test": "tsx testbed/run.ts",
-    "simulate": "tsx testbed/scripts/simulate.ts",
-    "clean": "tsx testbed/scripts/clean.ts"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@mengelbart/moqjs": "link:./../../moqjs",
     "mp4box": "^0.5.2",
-    "puppeteer": "^22.13.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.25.1"
@@ -30,7 +26,6 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
     "prettier": "^3.2.5",
-    "tsx": "^4.16.2",
     "typescript": "^5.2.2",
     "vite": "^5.2.0"
   }

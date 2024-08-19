@@ -29,7 +29,7 @@ function App() {
     establishMoqSession()
       .then((session) => {
         setSession(session);
-        const player = new StreamPerBFrame({
+        const player = new StreamPerGop({
           session,
           renderFrame: (frame) => {
             const ctx = canvasRef.current?.getContext("2d");

@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import { execSync } from "child_process";
 
-const PF_RULES = "./testbed/pf_rules.txt";
+const PF_RULES = "./pf_rules.txt";
 const PF_ANCHOR = "streaming-testbed";
 
 function setup() {

@@ -51,7 +51,7 @@ async fn main() -> anyhow::Result<()> {
     )
     .await?;
 
-    let video = StreamPerBFrame::new(tracks_writer)?;
+    let video = StreamPerTrack::new(tracks_writer)?;
 
     tokio::select! {
         res = server.run() => res.context("session error")?,

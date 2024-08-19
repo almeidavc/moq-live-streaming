@@ -151,7 +151,7 @@ export class Player extends EventTarget {
         };
         controller.enqueue(rawFrame);
         this.logger.onReceived(rawFrame);
-        // this.processing.set(rawFrame.pts, rawFrame);
+        this.processing.set(rawFrame.pts, rawFrame);
       },
     });
   }

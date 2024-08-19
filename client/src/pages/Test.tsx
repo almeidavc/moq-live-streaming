@@ -49,7 +49,7 @@ export function Test() {
       }
       setSessionLoading(false);
 
-      player = new StreamPerBFrame({
+      player = new StreamPerGop({
         session,
         renderFrame: (frame) => {
           const ctx = canvasRef.current?.getContext("2d");

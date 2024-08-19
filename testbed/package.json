@@ -1,0 +1,24 @@
+{
+  "name": "@moq-live-streaming/testbed",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "tsx ./run.ts",
+    "simulate": "tsx ./scripts/simulate.ts",
+    "clean": "tsx ./scripts/clean.ts"
+  },
+  "dependencies": {
+    "puppeteer": "^22.13.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "prettier": "^3.2.5",
+    "tsx": "^4.16.2",
+    "typescript": "^5.2.2"
+  }
+}

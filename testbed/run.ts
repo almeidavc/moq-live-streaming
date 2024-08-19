@@ -2,7 +2,11 @@ import puppeteer from "puppeteer";
 import { config } from "./config";
 import fs from "node:fs";
 import path from "node:path";
-import { clean, parseProfile, simulateNetworkPattern } from "./simulateMacos";
+import {
+  clean,
+  parseProfile,
+  simulateNetworkPattern,
+} from "./src/simulateMacos";
 
 const sigintHandler = () => {
   console.log("\nReceived SIGINT. Cleaning up...");
@@ -18,16 +22,16 @@ const browser = await puppeteer.launch({
 const page = await browser.newPage();
 await page.goto("http://localhost:5173/test");
 console.log(
-  "Player has launched. Establishing MoQ session and subscribing to tracks...",
+  "Player has launched. Establishing MoQ session and subscribing to tracks..."
 );
 await page.exposeFunction("onInitialBufferingStart", () => {
   console.log(
-    "Player subscribed to MoQ tracks successfully. Waiting for playback...",
+    "Player subscribed to MoQ tracks successfully. Waiting for playback..."
   );
 });
 await page.exposeFunction("onPlaying", () => {
   console.log(
-    "Stream is now playing. Waiting for 3 seconds of uninterrupted playback...",
+    "Stream is now playing. Waiting for 3 seconds of uninterrupted playback..."
   );
 });
 
@@ -59,7 +63,7 @@ await page.exposeFunction("onSimulationDone", async (metrics) => {
     JSON.stringify({
       profile: networkProfile,
       metrics: metrics,
-    }),
+    })
   );
   console.log(`Results saved to ${config.resultsDir}/${fileName}`);
 
