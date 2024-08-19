@@ -1,6 +1,7 @@
 # Live-Streaming System using Media over QUIC (MoQ)
 
-This repository contains the source code for my B.Sc. thesis project. The goal was to explore
+This repository contains the source code for my B.Sc. thesis project "Low-Latency Live Streaming using Media
+over QUIC". The goal was to explore
 ways of leveraging QUIC and in particular Media over QUIC to build a live-streaming latency
 that prioritizes latency.
 
