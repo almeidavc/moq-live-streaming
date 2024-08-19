@@ -1,0 +1,14 @@
+[
+  {
+    "speed": 1200,
+    "duration": 10
+  },
+  {
+    "speed": 300,
+    "duration": 10
+  },
+  {
+    "speed": 800,
+    "duration": 10
+  }
+]

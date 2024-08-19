@@ -1,0 +1,4 @@
+dummynet in quick proto { tcp udp } from 127.0.0.1 port 443 to 127.0.0.1 allow-opts pipe 5000
+dummynet in quick proto { tcp udp } from 127.0.0.1 to 127.0.0.1 port 443 allow-opts pipe 5000
+dummynet out quick proto { tcp udp } from 127.0.0.1 port 443 to 127.0.0.1 allow-opts pipe 5001
+dummynet out quick proto { tcp udp } from 127.0.0.1 to 127.0.0.1 port 443 allow-opts pipe 5001

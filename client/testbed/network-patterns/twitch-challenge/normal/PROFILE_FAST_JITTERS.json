@@ -1,0 +1,26 @@
+[
+  {
+    "speed": 500,
+    "duration": 0.25
+  },
+  {
+    "speed": 1200,
+    "duration": 5
+  },
+  {
+    "speed": 500,
+    "duration": 0.1
+  },
+  {
+    "speed": 1200,
+    "duration": 1
+  },
+  {
+    "speed": 500,
+    "duration": 0.25
+  },
+  {
+    "speed": 1200,
+    "duration": 5
+  }
+]
