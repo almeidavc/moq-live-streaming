@@ -26,11 +26,22 @@ export class ReorderBufferBFrames {
     this.buffer.sort((a, b) => a.dts - b.dts);
   }
 
+  enqueueNext(controller: TransformStreamDefaultController<RawFrame>) {
+    const next = this.buffer.shift()!;
+    ensureInOrder(next, this.lastEnqueued);
+    controller.enqueue(next);
+    this.lastEnqueued = next;
+  }
+
   transform(
     rawFrame: RawFrame,
     controller: TransformStreamDefaultController<RawFrame>,
   ) {
+    // drop any late B-frames
     if (this.lastEnqueued && rawFrame.dts < this.lastEnqueued.dts) {
+      if (rawFrame.frameType !== "B") {
+        throw new Error("Enqueued a frame ahead of an I-, or P-frame.");
+      }
       this.logger?.onDrop(rawFrame);
       return;
     }
@@ -39,20 +50,26 @@ export class ReorderBufferBFrames {
 
     while (this.bufferSize() > this.targetSize) {
       const next = this.buffer[0]!;
-      // if B-frame is early, wait, because it might be ahead of I- or P-frames
       if (
-        this.lastEnqueued &&
-        next.frameType === "B" &&
+        next.frameType !== "B" ||
+        !this.lastEnqueued ||
         // TODO: use lastEnqueued.duration
-        next.dts > this.lastEnqueued.dts + 512
+        next.dts === this.lastEnqueued.dts + 512
       ) {
-        break;
+        this.enqueueNext(controller);
+        continue;
       }
 
-      ensureInOrder(next, this.lastEnqueued);
-      controller.enqueue(next);
-      this.lastEnqueued = next;
-      this.buffer.shift();
+      // B-frame is early
+      let i = 1;
+      while (i < this.buffer.length && this.buffer[i]?.frameType === "B") i++;
+      if (i < this.buffer.length) {
+        // B-frame is not ahead of any I-, or P-frames (I-, P-frames are transmitted in order)
+        this.enqueueNext(controller);
+      } else {
+        // B-frame might be ahead of I-, or P-frames, so wait
+        break;
+      }
     }
   }
 }
