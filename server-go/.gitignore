@@ -1,0 +1,7 @@
+cert/localhost.crt
+cert/localhost.key
+dev/*.mp4
+moq-streaming-server
+
+.idea
+.DS_Store
